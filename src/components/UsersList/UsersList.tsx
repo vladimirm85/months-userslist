@@ -10,13 +10,20 @@ import Paper from '@material-ui/core/Paper';
 import { UserInterface } from '../../App';
 
 const useStyles = makeStyles({
+  container: {
+    height: 836,
+    margin: '14px 0',
+  },
   table: {
-    width: '800px',
+    width: '100%',
   },
   item: {
+    width: '7%',
+    maxWidth: '20px',
     textAlign: 'center',
   },
   text: {
+    width: '31%',
     textAlign: 'center',
   },
 });
@@ -31,7 +38,7 @@ export const UsersList: React.FC<UsersListPropsInterface> = (
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer className={classes.container} component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
