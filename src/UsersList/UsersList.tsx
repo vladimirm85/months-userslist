@@ -13,7 +13,7 @@ export const UsersList: React.FC<UsersListPropsInterface> = (
       {props.users.map((user: UserInterface, index: number) => (
         <div key={index}>
           First Name: {user.firstName}, Last Name: {user.lastName}, birthday:{' '}
-          {user.dob}
+          {user.dob.toLocaleDateString()}
         </div>
       ))}
     </React.Fragment>

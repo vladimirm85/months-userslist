@@ -21,6 +21,9 @@ export const App: React.FC = (): JSX.Element => {
   const [users, setUsers] = React.useState<UserInterface[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [monthsList, setMonthsList] = React.useState<MonthInterface[]>([]);
+  const [hoveredMonthUsers, setHoveredMonthUsers] = React.useState<
+    UserInterface[]
+  >([]);
 
   const generateMonthsList = React.useCallback(() => {
     const monthsList = MONTHS.map(
@@ -48,8 +51,7 @@ export const App: React.FC = (): JSX.Element => {
         console.log('Fetch error: ' + e);
       }
     };
-    !users.length && fetchUsers();
-    generateMonthsList();
+    !users.length ? fetchUsers() : generateMonthsList();
   }, [users, generateMonthsList]);
 
   return (
@@ -58,12 +60,16 @@ export const App: React.FC = (): JSX.Element => {
         <div className={'container'}>
           <div className={'months'}>
             {monthsList.map((month: MonthInterface) => (
-              <Month key={month.id} month={month} />
+              <Month
+                key={month.id}
+                month={month}
+                setHoveredMonthUsers={setHoveredMonthUsers}
+              />
             ))}
           </div>
 
           <div className={'users'}>
-            <UsersList users={users} />
+            <UsersList users={hoveredMonthUsers} />
           </div>
         </div>
       ) : (
