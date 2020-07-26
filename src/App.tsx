@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { API, MONTHS } from './constants';
 import { Month } from './Month';
+import { UsersList } from './UsersList';
 
 export interface UserInterface {
   id: string;
@@ -28,15 +29,14 @@ export const App: React.FC = (): JSX.Element => {
 
   return (
     <div className={'container'}>
-      {MONTHS.map((month: { id: string; name: string }) => (
-        <div className={'months'}>
+      <div className={'months'}>
+        {MONTHS.map((month: { id: string; name: string }) => (
           <Month month={month} />
-        </div>
-      ))}
-      <div>
-        {users.map((user: UserInterface) => (
-          <div>{user.firstName}</div>
         ))}
+      </div>
+
+      <div className={'users'}>
+        <UsersList users={users} />
       </div>
     </div>
   );
