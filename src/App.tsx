@@ -11,8 +11,15 @@ export interface UserInterface {
   dob: Date;
 }
 
+export interface MonthInterface {
+  id: string;
+  name: string;
+  users: UserInterface[];
+}
+
 export const App: React.FC = (): JSX.Element => {
   const [users, setUsers] = React.useState<UserInterface[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     const fetchUsers = async () => {
@@ -20,24 +27,31 @@ export const App: React.FC = (): JSX.Element => {
         const response = await API.get('/task0/users');
         const users = response.data as UserInterface[];
         setUsers(users);
+        setLoading(false);
       } catch (e) {
         console.log('Fetch error: ' + e);
       }
     };
     fetchUsers();
-  }, []);
+  }, [users]);
 
   return (
-    <div className={'container'}>
-      <div className={'months'}>
-        {MONTHS.map((month: { id: string; name: string }) => (
-          <Month month={month} />
-        ))}
-      </div>
+    <React.Fragment>
+      {!loading ? (
+        <div className={'container'}>
+          <div className={'months'}>
+            {MONTHS.map((month: { id: string; name: string }) => (
+              <Month month={month} />
+            ))}
+          </div>
 
-      <div className={'users'}>
-        <UsersList users={users} />
-      </div>
-    </div>
+          <div className={'users'}>
+            <UsersList users={users} />
+          </div>
+        </div>
+      ) : (
+        <div>Loading</div>
+      )}
+    </React.Fragment>
   );
 };
