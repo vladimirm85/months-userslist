@@ -1,7 +1,12 @@
 import React from 'react';
+import { MonthInterface } from '../App';
 
-export const Month: React.FC<{
-  month: { id: string; name: string };
-}> = (props: { month: { id: string; name: string } }): JSX.Element => {
+export interface MonthPropsInterface {
+  month: MonthInterface;
+}
+
+export const Month: React.FC<MonthPropsInterface> = (
+  props: MonthPropsInterface
+): JSX.Element => {
   return <div key={props.month.id}>{props.month.name}</div>;
 };
