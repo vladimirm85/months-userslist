@@ -1,6 +1,7 @@
 import React from 'react';
-import { MonthInterface, UserInterface } from '../App';
-import { MONTHCOLORS } from '../constants';
+import './Month.css';
+import { MonthInterface, UserInterface } from '../../App';
+import { MONTHCOLORS } from '../../constants';
 
 type ColorsTypes =
   | '0'
@@ -32,6 +33,7 @@ export const Month: React.FC<MonthPropsInterface> = (
 
   return (
     <div
+      className={'month'}
       style={backgroundColor}
       onMouseEnter={() => setHoveredMonthUsers(month.users)}
       onMouseLeave={() => setHoveredMonthUsers([])}

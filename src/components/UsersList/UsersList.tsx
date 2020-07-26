@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserInterface } from '../App';
+import { UserInterface } from '../../App';
 
 interface UsersListPropsInterface {
   users: UserInterface[];

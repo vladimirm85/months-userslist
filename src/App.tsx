@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { API, MONTHS } from './constants';
-import { Month } from './Month';
-import { UsersList } from './UsersList';
+import { Month } from './components/Month';
+import { UsersList } from './components/UsersList';
 
 export interface UserInterface {
   id: string;
