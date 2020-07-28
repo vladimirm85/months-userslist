@@ -1,21 +1,7 @@
 import React from 'react';
 import './Month.css';
 import { MonthInterface, UserInterface } from '../../App';
-import { MONTHCOLORS } from '../../constants';
-
-type ColorsTypes =
-  | '0'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | '7'
-  | '8'
-  | '9'
-  | '10'
-  | '11';
+import { MONTHCOLORS, ColorsIndexes } from '../../constants';
 
 export interface MonthPropsInterface {
   month: MonthInterface;
@@ -28,7 +14,7 @@ export const Month: React.FC<MonthPropsInterface> = (
   const { month, setHoveredMonthUsers } = props;
   const colorIndex = month.users.length > 10 ? 11 : month.users.length;
   const backgroundColor = {
-    backgroundColor: MONTHCOLORS[colorIndex.toString() as ColorsTypes],
+    backgroundColor: MONTHCOLORS[colorIndex.toString() as ColorsIndexes],
   };
 
   return (

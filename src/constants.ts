@@ -55,6 +55,20 @@ export const MONTHS = [
   },
 ];
 
+export type ColorsIndexes =
+  | '0'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11';
+
 export const MONTHCOLORS = {
   '0': '#E0E0E0',
   '1': '#E0E0E0',
